@@ -1,15 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
+const helloWorld = resolve => require(['@/components/index/HelloWorld'] , resolve)
+const home = resolve => require(['@/components/index/home'], resolve);
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      path: '/helloWorld',
+      name: 'helloWorld',
+      component: helloWorld,
+      meta :{
+      	title : "hello",
+      	backgroundColor : "#ff0000"
+      }
+    },
+     {
+      path: '/home',
+      name: 'home',
+      component: home,
+      meta :{
+      	title : "首页",
+      	backgroundColor : "#ccc"
+      }
+    },
+    {
+			path: "*",
+			redirect: "/home"
+		}
   ]
 })

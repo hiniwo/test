@@ -1,23 +1,26 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+	<div id="app">
+		<keep-alive>
+			<router-view v-if="$route.meta.keepAlive" v-wechat-title="$route.meta.title" />
+		</keep-alive>
+		<router-view v-if="!$route.meta.keepAlive" v-wechat-title="$route.meta.title" />
+	</div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+	export default {
+		name: 'App',
+		watch: {
+			$route() {
+				document.body.style.background = this.$route.meta.backgroundColor || "#f5f5f5";
+			}
+		}
+	}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	#app {
+		max-width: 768px;
+		margin: 0 auto;
+	}
 </style>
