@@ -8,6 +8,7 @@ import 'mint-ui/lib/style.css'
 import VueWechatTitle from 'vue-wechat-title'
 import "../static/css/base.css"
 
+
 Vue.config.productionTip = false;
 Vue.use(VueWechatTitle);
 Vue.use(MintUI);
